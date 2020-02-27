@@ -1,0 +1,88 @@
+---
+
+name: Deep Dive
+route: /deep-dive
+
+---
+
+# Deep Dive
+
+## An All in one component
+
+Spawn either message or notification component by using the same component by setting the ```type``` prop to ```message``` or ```notification```.
+
+```jsx
+ type: 'notification'
+```
+<h3 style="text-align: center">or</h3>
+
+ ```jsx
+ type: 'message'
+ ```
+
+## Choose between notification types
+
+Render either ```success```, ```error```, ```info``` or ```warn``` message to the user by using the following syntax. Use openNotification to render components without any icons.
+
+```jsx
+notification.success(config) // Render success notification
+
+notification.error(config) // Render error notification
+
+notification.info(config) // Render info notification
+
+notification.warn(config) // Render warning notification
+
+notification.openNotification(config) // Render notification without an icon
+```
+
+## Exercise better control over your component's look
+
+Tweak the look and feel of your component by defining a custom class using ```className``` prop.
+
+```jsx
+className: /* your class name */
+```
+
+## The onNotificationClick and onNotificationClose callbacks
+
+Use the onNotificationClick and onNotificationClose callbacks to define further actions after user performs these actions on the notification component. Both the callbacks have id's of the notification component as arguments.
+
+```jsx
+notification.success({
+    .....
+    onNotificationClick: handleNotificationClick
+    onNotificationClose: handleNotificationClose
+})
+
+handleNotificationClick = id => {
+    // perform actions on clicking the component
+}
+
+handleNotificationClose = id => {
+    // perform actions on closing the component
+}
+```
+
+## The closeNotification function
+
+Close a notification component from anywhere by passing the id of the notification to the closeNotification function.
+
+```jsx
+notification.closeNotification(id) //closeNotification
+```
+
+## Close duration
+
+Control the close duration of a component by specifying the duration within which the component closes. The default close duration is 2000ms. Set the ```duration``` prop to 0 to have infinite closing time.
+
+```jsx
+notification.openNotification({
+    ....
+    duration: // 0: infinite close time, 0> : closes in specified time, undefined: closes in 2000ms
+})
+
+## Animate notification opening
+
+import ```animations.css``` from the ```dist/``` directory to apply animations to your notification component.
+```
